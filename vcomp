@@ -22,6 +22,7 @@ print_usage() {
 function version-gte {
   if [ $1 = $2 ]
   then
+    echo "eq"
     return 0
   fi
   return `version-gt "$1" "$2"`
