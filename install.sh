@@ -3,7 +3,10 @@
 # Run this script to install the bash-options script
 
 
-options_dir="$(dirname "$(realpath "$0")")"/options
+script_dir="$(dirname "$(realpath "$0")")"
 
-sudo chmod +x $options_dir
-sudo mv $options_dir /usr/local/bin/
+sudo chmod +x $script_dir/options
+sudo mv $script_dir/options /usr/local/bin/
+
+sudo chmod +x $script_dir/vcomp
+sudo mv $script_dir/vcomp /usr/local/bin/
