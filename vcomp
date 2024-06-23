@@ -1,8 +1,16 @@
-#!bin/bash
+#!/bin/bash
 
 # Compare two version numbers
 
 mode=$1
+
+while getopts "g:l:e:" opt      # get options for -a and -b ( ':' - option has an argument )
+do
+    case $opt in
+        a) echo "Option a: $opt, argument: $OPTARG";;
+        b) echo "Option b: $opt, argument: $OPTARG";;
+    esac
+done
 
 
 # Compares version A to version B and if A is greater than or equal to B returns 0, otherwise returns 1
@@ -41,3 +49,4 @@ function version-ls {
 
 
 
+if [[ "$mode" ==  ]]
