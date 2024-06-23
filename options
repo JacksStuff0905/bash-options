@@ -5,10 +5,10 @@
 # options syntax: <some-command> will be executed
 
 print_usage() {
-    echo "Usage: $0 [file | directory]"
+    echo "Usage: `basename $0` [file | directory]"
     echo "Examples:"
-    echo "  $0 /etc/skel/"
-    echo "  $0 ~/.bashrc"
+    echo "  `basename $0` /etc/skel/"
+    echo "  `basename $0` ~/.bashrc"
     exit 1
 }
 
