@@ -8,6 +8,7 @@ print_usage() {
     echo "  -g   Compare if version1 is greater than version2"
     echo "  -l   Compare if version1 is less than version2"
     echo "  -e   Compare if version1 is equal to version2"
+    echo "  -p   Prints the result to the console as either true or false"
     echo "Options can be combined like -ge or -eg but not -gl or -lg."
     echo "You can provide versions directly or the names of programs."
     echo "If program names are provided, their versions will be fetched using '--version'."
@@ -59,7 +60,6 @@ function get-version {
 }
 
 
-
 while getopts "gle" opt      # get options for -a and -b ( ':' - option has an argument )
 do
     case $opt in
@@ -72,6 +72,7 @@ do
             fi
             ;;
         e) mode="${mode}e";;
+        p) do_print=0;;
     esac
 done
 
@@ -109,4 +110,15 @@ then
         version-lt "$version1" "$version2"
     fi
 fi
+
+if [[ $do_print == 0 ]]
+then
+    if [[ $? == 0 ]]
+    then
+        echo "true"
+    else
+        echo "false"
+    fi
+exit
+
 exit $?
