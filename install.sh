@@ -10,3 +10,6 @@ sudo mv $script_dir/options /usr/local/bin/
 
 sudo chmod +x $script_dir/vcomp
 sudo mv $script_dir/vcomp /usr/local/bin/
+
+sudo chmod +x $script_dir/options-toggle
+sudo mv $script_dir/options-toggle /usr/local/bin/
