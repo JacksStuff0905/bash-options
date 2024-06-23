@@ -15,12 +15,11 @@ print_usage() {
 
 # Compares version A to version B and if A is greater than or equal to B returns 0, otherwise returns 1
 function version-gte {
-  local version=$($version1 --version | grep -oP "(?<=\bversion\s)\S+")
-  if [ $version == $version2 ]
+  if [ $version1 == $version2 ]
   then
     return 0
   fi
-  if [[ $(printf "%s\n" "$version" $version2 | sort -V | head -n 1) != "$version" ]]
+  if [[ $(printf "%s\n" "$version1" $version2 | sort -V | head -n 1) != "$version1" ]]
   then
       return 1
   fi
@@ -29,8 +28,7 @@ function version-gte {
 
 # Compares version A to version B and if A is greater than B returns 0, otherwise returns 1
 function version-gt {
-  local version=$($version1 --version | grep -oP "(?<=\bversion\s)\S+")
-  if [[ $(printf "%s\n" "$version" $version2 | sort -V | head -n 1) != "$version" ]]
+  if [[ $(printf "%s\n" "$version1" $version2 | sort -V | head -n 1) != "$version1" ]]
   then
       return 1
   fi
@@ -47,12 +45,21 @@ function version-lt {
   return ! version-gt
 }
 
+function get-version {
+    re='^([0-9]|\.)+$'
+    if ! [[ $version1 =~ $re ]] ; then
+        local version=$($version1 --version | grep -oP "(?<=\bversion\s)\S+")
+        version1=$version
+    fi
+    if ! [[ $version2 =~ $re ]] ; then
+        local version=$($version2 --version | grep -oP "(?<=\bversion\s)\S+")
+        version2=$version
+    fi
+}
 
 
 
-
-
-while getopts "g:l:e:" opt      # get options for -a and -b ( ':' - option has an argument )
+while getopts "gle" opt      # get options for -a and -b ( ':' - option has an argument )
 do
     case $opt in
         g) mode="${mode}g";;
@@ -61,6 +68,7 @@ do
             then
                 echo "Error: Options g and l can't be used simultaneously"
                 print_usage
+            fi
             ;;
         e) mode="${mode}e";;
     esac
@@ -78,7 +86,7 @@ version2=$2
 
 
 
-
+get-version
 
 
 if [[ "$mode" == *g* ]]
