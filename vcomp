@@ -19,7 +19,7 @@ function version-gte {
   then
     return 0
   fi
-  return version-gt "$1" "$2"
+  return `version-gt "$1" "$2"`
 }
 
 # Compares version A to version B and if A is greater than B returns 0, otherwise returns 1
@@ -33,12 +33,12 @@ function version-gt {
 
 # Compares version A to version B and if A is less than or equal to B returns 0, otherwise returns 1
 function version-lte {
-  return ! version-gt "$1" "$2"
+  return ! `version-gt "$1" "$2"`
 }
 
 # Compares version A to version B and if A is less than B returns 0, otherwise returns 1
 function version-lt {
-  return ! version-gte "$1" "$2"
+  return ! `version-gte "$1" "$2"`
 }
 
 function get-version {
@@ -89,9 +89,9 @@ if [[ "$mode" == *g* ]]
 then
     if [[ "$mode" == *e* ]]
     then
-        exit version-gte "$version1" "$version2"
+         version-gte "$version1" "$version2"
     else
-        exit version-gt "$version1" "$version2"
+        version-gt "$version1" "$version2"
     fi
 fi
 
@@ -99,8 +99,10 @@ if [[ "$mode" == *l* ]]
 then
     if [[ "$mode" == *e* ]]
     then
-        exit version-lte "$version1" "$version2"
+        version-lte "$version1" "$version2"
     else
-        exit version-lt "$version1" "$version2"
+        version-lt "$version1" "$version2"
     fi
 fi
+
+exit $?
