@@ -4,12 +4,23 @@
 # to enable syntax add an empty line with <use-options> somwhere in your file
 # options syntax: <some-command> will be executed
 
+print_usage() {
+    echo "Usage: $0 [file | directory]"
+    echo "Examples:"
+    echo "  $0 /etc/skel/"
+    echo "  $0 ~/.bashrc"
+    exit 1
+}
+
 script_dir="$(dirname "$(realpath "$0")")"
 
 target=$1
 
 
-
+if [ -z $target ]
+then
+  print_usage()
+fi
 
 
 
