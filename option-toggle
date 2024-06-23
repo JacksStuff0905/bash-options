@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Returns a # if received 1 and returns nothing if received 0
-echo $1 > test3
 
 if [ $1 == 0 ]
 then
