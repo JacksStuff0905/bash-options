@@ -33,12 +33,12 @@ function version-gt {
 
 # Compares version A to version B and if A is less than or equal to B returns 0, otherwise returns 1
 function version-lte {
-  return ! version-gt
+  return ! version-gt "$1" "$2"
 }
 
 # Compares version A to version B and if A is less than B returns 0, otherwise returns 1
 function version-lt {
-  return ! version-gte
+  return ! version-gte "$1" "$2"
 }
 
 function get-version {
