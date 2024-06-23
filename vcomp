@@ -60,7 +60,7 @@ function get-version {
 }
 
 
-while getopts "gle" opt      # get options for -a and -b ( ':' - option has an argument )
+while getopts "glep" opt
 do
     case $opt in
         g) mode="${mode}g";;
