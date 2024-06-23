@@ -15,11 +15,11 @@ print_usage() {
 
 # Compares version A to version B and if A is greater than or equal to B returns 0, otherwise returns 1
 function version-gte {
-  if [ $version1 == $version2 ]
+  if [ $1 = $2 ]
   then
     return 0
   fi
-  if [[ $(printf "%s\n" "$version1" $version2 | sort -V | head -n 1) != "$version1" ]]
+  if [[ $(printf "%s\n" "$1" $2 | sort -V | head -n 1) != "$1" ]]
   then
       return 1
   fi
@@ -28,7 +28,7 @@ function version-gte {
 
 # Compares version A to version B and if A is greater than B returns 0, otherwise returns 1
 function version-gt {
-  if [[ $(printf "%s\n" "$version1" $version2 | sort -V | head -n 1) != "$version1" ]]
+  if [[ $(printf "%s\n" "$1" $2 | sort -V | head -n 1) != "$1" ]]
   then
       return 1
   fi
@@ -47,12 +47,12 @@ function version-lt {
 
 function get-version {
     re='^([0-9]|\.)+$'
-    if ! [[ $version1 =~ $re ]] ; then
-        local version=$($version1 --version | grep -oP "(?<=\bversion\s)\S+")
+    if ! [[ $1 =~ $re ]] ; then
+        local version=$($1 --version | grep -oP "(?<=\bversion\s)\S+")
         version1=$version
     fi
-    if ! [[ $version2 =~ $re ]] ; then
-        local version=$($version2 --version | grep -oP "(?<=\bversion\s)\S+")
+    if ! [[ $2 =~ $re ]] ; then
+        local version=$($2 --version | grep -oP "(?<=\bversion\s)\S+")
         version2=$version
     fi
 }
@@ -93,9 +93,9 @@ if [[ "$mode" == *g* ]]
 then
     if [[ "$mode" == *e* ]]
     then
-        exit version-gte
+        exit version-gte "version1" "version2"
     else
-        exit version-gt
+        exit version-gt "version1" "version2"
     fi
 fi
 
@@ -103,8 +103,8 @@ if [[ "$mode" == *l* ]]
 then
     if [[ "$mode" == *e* ]]
     then
-        exit version-lte
+        exit version-lte "version1" "version2"
     else
-        exit version-lt
+        exit version-lt "version1" "version2"
     fi
 fi
