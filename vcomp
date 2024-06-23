@@ -19,11 +19,7 @@ function version-gte {
   then
     return 0
   fi
-  if [[ version-gt "$1" "$2" ]]
-  then
-      return 1
-  fi
-  return 0
+  return version-gt "$1" "$2"
 }
 
 # Compares version A to version B and if A is greater than B returns 0, otherwise returns 1
