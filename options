@@ -29,7 +29,6 @@ function process_file {
   grep -oP "(?<=<)[^<>]+(?=>)" $file | while read line
   do
     sed -i "s/<$line>/`$line`/" "$file"
-    fi
   done
   
 }
