@@ -86,7 +86,7 @@ version2=$2
 
 
 
-get-version
+get-version "version1" "version2"
 
 
 if [[ "$mode" == *g* ]]
