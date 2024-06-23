@@ -40,13 +40,21 @@ function version-gt {
 # Compares version A to version B and if A is less than or equal to B returns 0, otherwise returns 1
 function version-lte {
   version-gt "$1" "$2"
-  return [ $? -eq "1" ]
+  if [[ $? -eq 0 ]]; then
+      return 1
+  else
+      return 0
+  fi
 }
 
 # Compares version A to version B and if A is less than B returns 0, otherwise returns 1
 function version-lt {
   version-gte "$1" "$2"
-  return [ $? -eq "1" ]
+  if [[ $? -eq 0 ]]; then
+      return 1
+  else
+      return 0
+  fi
 }
 
 function get-version {
