@@ -93,9 +93,9 @@ if [[ "$mode" == *g* ]]
 then
     if [[ "$mode" == *e* ]]
     then
-        return version-gte
+        exit version-gte
     else
-        return version-gt
+        exit version-gt
     fi
 fi
 
@@ -103,8 +103,8 @@ if [[ "$mode" == *l* ]]
 then
     if [[ "$mode" == *e* ]]
     then
-        return version-lte
+        exit version-lte
     else
-        return version-lt
+        exit version-lt
     fi
 fi
