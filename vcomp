@@ -125,8 +125,6 @@ then
     fi
 fi
 
-echo $result
-
 if [[ $do_print == 0 ]]
 then
     if [[ $result == 0 ]]
