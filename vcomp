@@ -3,12 +3,17 @@
 # Compare two version numbers
 
 print_usage() {
-    echo "Usage: $0 -[g|l|e] version1 version2"
+    echo "Usage: $0 -[g|l|e] [program1 | version1] [program2 | version2]"
     echo "Options:"
     echo "  -g   Compare if version1 is greater than version2"
     echo "  -l   Compare if version1 is less than version2"
     echo "  -e   Compare if version1 is equal to version2"
-    echo "Options can be combined like -ge or -eg but not -gl or -lg"
+    echo "Options can be combined like -ge or -eg but not -gl or -lg."
+    echo "You can provide versions directly or the names of programs."
+    echo "If program names are provided, their versions will be fetched using '--version'."
+    echo "Examples:"
+    echo "  $0 -ge 1.2.3 1.2.0"
+    echo "  $0 -l python gcc"
     exit 1
 }
 
