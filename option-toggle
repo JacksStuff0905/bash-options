@@ -7,9 +7,6 @@ command="$1"
 shift  # Remove the first argument (command) from the list
 args=("$@")
 
-# Print the command being executed
-echo "Executing command: $command ${args[@]}"
-
 # Execute the command
 "$command" "${args[@]}"
 
