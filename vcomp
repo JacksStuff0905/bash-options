@@ -95,9 +95,11 @@ if [[ "$mode" == *g* ]]
 then
     if [[ "$mode" == *e* ]]
     then
-         version-gte "$version1" "$version2"
+        version-gte "$version1" "$version2"
+        result=$?
     else
         version-gt "$version1" "$version2"
+        result=$?
     fi
 fi
 
@@ -106,12 +108,13 @@ then
     if [[ "$mode" == *e* ]]
     then
         version-lte "$version1" "$version2"
+        result=$?
     else
         version-lt "$version1" "$version2"
+        result=$?
     fi
 fi
 
-result=$?
 echo $result
 
 if [[ $do_print == 0 ]]
