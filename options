@@ -39,8 +39,8 @@ function process_file {
   
   grep -oP "(?<=<)[^<>]+(?=>)" $file | while read line
   do
-    $line
-    sed -i "s/<$line>/$($line)/" "$file"
+    eval "$line"
+    sed -i "s/<$line>/$(eval "$line")/" "$file"
   done
   
 }
