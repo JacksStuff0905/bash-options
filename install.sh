@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 # Run this script to install the bash-options script
 
