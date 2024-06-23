@@ -112,6 +112,7 @@ then
 fi
 
 result=$?
+echo $result
 
 if [[ $do_print == 0 ]]
 then
