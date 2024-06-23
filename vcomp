@@ -119,6 +119,6 @@ then
     else
         echo "false"
     fi
-exit
+fi
 
 exit $?
