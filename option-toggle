@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Returns a # if received 1 and returns nothing if received 0
+
+if [ $1 ]
+then
+  exit ""
+else
+  exit "#"
+fi
