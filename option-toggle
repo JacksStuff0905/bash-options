@@ -2,7 +2,7 @@
 
 # Returns a # if received 1 and returns nothing if received 0
 
-if [ $1 == "0" ]
+if [ $1 -eq 1 ]
 then
   echo ""
 else
