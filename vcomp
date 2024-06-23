@@ -109,5 +109,5 @@ then
         version-lt "$version1" "$version2"
     fi
 fi
-
+echo $?
 exit $?
