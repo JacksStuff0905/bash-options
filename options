@@ -19,7 +19,7 @@ target=$1
 
 if [ -z $target ]
 then
-  print_usage()
+  print_usage
 fi
 
 
